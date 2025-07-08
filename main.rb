@@ -6,6 +6,7 @@ puts "=== RubyLLM AI Agents Cookbook ==="
 puts "=========================="
 
 # Uncomment the examples you want to run
-require_relative 'examples/prompt_chaining'
+# require_relative 'examples/prompt_chaining'
+require_relative 'examples/parallelization'
 
 puts "=== Done ==="

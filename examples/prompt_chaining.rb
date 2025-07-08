@@ -1,3 +1,6 @@
+# Example 1: Prompt chain workflow for structured data extraction and formatting
+# Each step progressively transforms raw text into a formatted table
+
 data_processing_steps = [
   "Extract only the numerical values and their associated metrics from the text.\n" \
   "Format each as 'value: metric' on a new line.\n" \
@@ -37,7 +40,7 @@ report =
 
 puts "\nInput text:"
 puts report
-formatted_result = chain(report, data_processing_steps)
+formatted_result = chain(input: report, prompts: data_processing_steps)
 
 puts "\nFormatted result:"
 puts formatted_result
