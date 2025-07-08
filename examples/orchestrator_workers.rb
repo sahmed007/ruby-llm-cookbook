@@ -1,3 +1,6 @@
+# Example 4: Orchestrator pattern with worker specialization
+# Break down a task into multiple subtasks and delegate to workers before synthesizing their results
+
 require_relative '../lib/orchestrator'
 
 orchestrator_prompt = <<~PROMPT
