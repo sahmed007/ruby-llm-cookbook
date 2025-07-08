@@ -7,7 +7,7 @@ RubyLLM.configure do |config|
 end
 
 module LLMUtils
-  def llm_call(prompt, system_prompt: "", model: "meta-llama/llama-4-maverick:free")
+  def llm_call(prompt, system_prompt: "", model: "meta-llama/llama-4-scout")
     # Calls the model with the given prompt and returns the response
     chat = RubyLLM.chat(model: model)
       .with_temperature(0.1)
@@ -21,6 +21,32 @@ module LLMUtils
     # Extracts the content of the specified XML tag from the given text
     match = text.match(/<#{tag}>(.*?)<\/#{tag}>/m)
     match ? match[1] : ""
+  end
+
+  def parse_tasks(tasks_xml)
+    # Parse XML tasks into an array of task hashes.
+    tasks = []
+    current_task = {}
+  
+    tasks_xml.each_line do |line|
+      line = line.strip
+      next if line.empty?
+  
+      if line.start_with?("<task>")
+        current_task = {}
+      elsif line.start_with?("<type>")
+        current_task["type"] = line[6..-8].strip
+      elsif line.start_with?("<description>")
+        current_task["description"] = line[12..-14].strip
+      elsif line.start_with?("</task>")
+        if current_task.key?("description")
+          current_task["type"] ||= "default"
+          tasks << current_task
+        end
+      end
+    end
+  
+    tasks
   end
 
   def chain(input:, prompts:)
