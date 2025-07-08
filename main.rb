@@ -7,6 +7,7 @@ puts "=========================="
 
 # Uncomment the examples you want to run
 # require_relative 'examples/prompt_chaining'
-require_relative 'examples/parallelization'
+# require_relative 'examples/parallelization'
+require_relative 'examples/routing'
 
 puts "=== Done ==="
