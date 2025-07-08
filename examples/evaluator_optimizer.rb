@@ -1,4 +1,4 @@
-# Example 5: Evaluator-Optimizer pattern
+# Example 5: Evaluator-Optimizer pattern for code generation and optimization
 # In this workflow, one LLM call generates a response while another provides evaluation and feedback in a loop
 
 require_relative '../lib/optimizer'
